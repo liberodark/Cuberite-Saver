@@ -8,14 +8,14 @@
  # init
 
 dir_temp="/tmp/cuberite-$RANDOM"
-dir_cube="/home/pi/cuberite"
+dir_cube=$(pwd)
 dir_backup="$dir_cube/"
 link_arm="https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 link_x32="https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 link_x64="https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 server_arch=$(uname -m)
 update_source="https://raw.githubusercontent.com/liberodark/Cuberite-Saver/master/save.sh"
-version="1.1.0"
+version="1.1.1"
 
 echo "Welcome on Cuberite-Saver $version"
 
@@ -69,15 +69,15 @@ echo "server stoped"
 	cd $dir_temp
 
 	if [ $server_arch = "x64" ]; then
-		wget $link_ts3_x64
+		wget $link_x64
 	else
-		wget $link_ts3_x32
+		wget $link_x32
 	fi ;
 
 	echo "newest version downloaded."
 
 	# extracting
-	tar -xzf Cuberite.tar.gz
+	tar -xzf Cuberite.tar.gz && mv Server/* .
 	rm Cuberite.tar.gz
 	if [ ! -e "Cuberite" ]; then
 		cd *
@@ -85,7 +85,7 @@ echo "server stoped"
 	echo "files extracted."
 
 	# moving to ts3_dir
-	cp -fr Server/* $dir_cube
+	cp -fr * $dir_cube
 	echo "server updated"
 
 # cleaning temp files
