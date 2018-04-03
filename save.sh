@@ -14,8 +14,8 @@ link_arm="https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Maste
 link_x32="https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 link_x64="https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 server_arch=$(uname -m)
-update_source="https://raw.githubusercontent.com/liberodark/TS3-Update/master/update.sh"
-version="1.0.0"
+update_source="https://raw.githubusercontent.com/liberodark/Cuberite-Saver/master/save.sh"
+version="1.1.0"
 
 echo "Welcome on Cuberite-Saver $version"
 
