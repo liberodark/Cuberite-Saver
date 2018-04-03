@@ -9,7 +9,7 @@
 
 dir_temp="/tmp/cuberite-$RANDOM"
 dir_cube="/home/pi/cuberite"
-dir_backup="$dir_cube/
+dir_backup="$dir_cube/"
 link_arm="https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 link_x32="https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 link_x64="https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
