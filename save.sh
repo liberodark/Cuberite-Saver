@@ -15,7 +15,7 @@ link_x32="https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/lastSt
 link_x64="https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 server_arch=$(uname -m)
 update_source="https://raw.githubusercontent.com/liberodark/Cuberite-Saver/master/save.sh"
-version="1.1.2"
+version="1.1.3"
 
 echo "Welcome on Cuberite-Saver $version"
 
@@ -68,7 +68,7 @@ echo "server stoped"
 	# downloading
 	cd $dir_temp
 
-	if [ $server_arch = "x64" ]; then
+	if [ $server_arch = "x86_64" ]; then
 		wget $link_x64
 	else
 		wget $link_x32
