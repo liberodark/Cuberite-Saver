@@ -32,11 +32,135 @@ fi ;
  	$0 noupdate
  	exit 0
  fi ;
+ 
+ # Check OS & wget
 
+which wget &> /dev/null
 
- # stop cuberite
-sudo service cuberite stop
-echo "server stoped"
+if [ $? != 0 ]; then
+  echo "wget is not Installed"
+   distribution=$(cat /etc/issue | head -n +1 | awk '{print $1}')
+
+  if [ "$distribution" = "Manjaro" ]; then
+    sudo pacman -S wget # Manjaro / Arch Linux
+    
+  elif [ "$distribution" = "Ubuntu" ]; then
+    sudo apt install wget # Ubuntu / Debian
+    
+  elif [ "$distribution" = "OpenSuse" ]; then
+    sudo yum install wget # OpenSuse / CentOS
+    
+  elif [ "$distribution" = "Fedora" ]; then
+    sudo dnf install wget # Fedora
+    
+  elif [ "$distribution" = "CentOS" ]; then
+    sudo yum install wget # OpenSuse / CentOS
+    
+  elif [ "$distribution" = "Debian" ]; then
+    sudo apt install wget # Ubuntu / Debian
+    
+  elif [ "$distribution" = "Gentoo" ]; then
+    su -c emerge wget # Gentoo
+  fi
+  else
+echo "wget is Installed"
+fi
+
+# Check OS & tar
+
+which unzip &> /dev/null
+
+if [ $? != 0 ]; then
+  echo "tar is not Installed"
+   distribution=$(cat /etc/issue | head -n +1 | awk '{print $1}')
+
+  if [ "$distribution" = "Manjaro" ]; then
+    sudo pacman -S tar # Manjaro / Arch Linux
+    
+  elif [ "$distribution" = "Ubuntu" ]; then
+    sudo apt install tar # Ubuntu / Debian
+    
+  elif [ "$distribution" = "OpenSuse" ]; then
+    sudo yum install tar # OpenSuse / CentOS
+    
+  elif [ "$distribution" = "Fedora" ]; then
+    sudo dnf install tar # Fedora
+    
+  elif [ "$distribution" = "CentOS" ]; then
+    sudo yum install tar # OpenSuse / CentOS
+    
+  elif [ "$distribution" = "Debian" ]; then
+    sudo apt install tar # Ubuntu / Debian
+    
+  elif [ "$distribution" = "Gentoo" ]; then
+    su -c emerge tar # Gentoo
+  fi
+  else
+echo "tar is Installed"
+fi
+
+# Check OS & sudo
+
+which sudo &> /dev/null
+
+if [ $? != 0 ]; then
+  echo "sudo is not Installed"
+   distribution=$(cat /etc/issue | head -n +1 | awk '{print $1}')
+
+  if [ "$distribution" = "Manjaro" ]; then
+    su pacman -S sudo # Manjaro / Arch Linux
+    
+  elif [ "$distribution" = "OpenSuse" ]; then
+    su yum install sudo # OpenSuse / CentOS
+    
+  elif [ "$distribution" = "Fedora" ]; then
+    su dnf install sudo # Fedora
+    
+  elif [ "$distribution" = "CentOS" ]; then
+    su yum install sudo # OpenSuse / CentOS
+    
+  elif [ "$distribution" = "Gentoo" ]; then
+    su -c emerge sudo # Gentoo
+  fi
+  else
+echo "sudo is Installed"
+fi
+
+# Check Cuberite Service
+which service cuberite &> /dev/null
+
+if [ "$?" != 0 ]; then
+    echo "Cuberite Service not Installed"
+    wget https://www.dropbox.com/s/kp5xkzi2ng29cqk/cuberitedaemon.tar.gz
+    tar -xvzf cuberitedaemon.tar.gz && rm cuberitedaemon.tar.gz
+    mv cuberite /etc/init.d/
+    chmod 677 /etc/init.d/cuberite
+    update-rc.d cuberite defaults
+    mv cuberite.sh /root/
+else
+    echo "Cuberite Service is Installed"
+fi
+
+# Check Cuberite
+which ls /opt/cuberite/ &> /dev/null
+
+if [ "$?" != 0 ]; then
+    echo "Cuberite not Installed"
+    sudo mkdir /opt/cuberite/
+    sudo cd /opt/cuberite/
+    sudo wget -Nnv https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/update.sh && chmod +x install.sh; ./install.sh
+else
+    echo "Cuberite is Installed"
+fi
+
+# Stop Cuberite
+sudo service cuberite stop &> /dev/null
+
+if [ "$?" != 0 ]; then
+    echo "Cuberite is not Stoped"
+else
+    echo "Cuberite is Stoped"
+fi
 
  # backup cuberite
 
@@ -90,24 +214,6 @@ echo "server stoped"
 
 # cleaning temp files
 rm -fr $dir_temp
-
-# Install Service
-
-wget https://www.dropbox.com/s/kp5xkzi2ng29cqk/cuberitedaemon.tar.gz
-
-tar -xvzf cuberitedaemon.tar.gz && rm cuberitedaemon.tar.gz
-
-
-mv cuberite /etc/init.d/
-
-chmod 775 /etc/init.d/cuberite
-
-update-rc.d cuberite defaults
-
-nano cuberite.sh
-
-mv cuberite.sh /root/
-
 
 # starting cuberite
 sudo service cuberite start
