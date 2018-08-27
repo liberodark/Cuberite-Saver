@@ -147,7 +147,6 @@ which ls /home/cuberite/ &> /dev/null
 if [ "$?" != 0 ]; then
     echo "Cuberite not Installed"
     mkdir /home/cuberite/
-    cd /home/cuberite/
 else
     echo "Cuberite is Installed"
 fi
