@@ -2,7 +2,7 @@
 #
 # About: Install and save cuberite server automatically
 # Author: liberodark
-# Project: Cuberite-Saver
+# Project: Cuberite-Update
 # License: GNU GPLv3
 
  # init
@@ -14,10 +14,10 @@ link_arm="https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Maste
 link_x32="https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 link_x64="https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastStableBuild/artifact/Cuberite.tar.gz"
 server_arch=$(uname -m)
-update_source="https://raw.githubusercontent.com/liberodark/Cuberite-Saver/master/save.sh"
+update_source="https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/update.sh"
 version="1.1.3"
 
-echo "Welcome on Cuberite-Saver $version"
+echo "Welcome on Cuberite-Update $version"
 
  # make update if asked
 if [ "$1" = "noupdate" ]; then
@@ -90,6 +90,24 @@ echo "server stoped"
 
 # cleaning temp files
 rm -fr $dir_temp
+
+# Install Service
+
+wget https://www.dropbox.com/s/kp5xkzi2ng29cqk/cuberitedaemon.tar.gz
+
+tar -xvzf cuberitedaemon.tar.gz && rm cuberitedaemon.tar.gz
+
+
+mv cuberite /etc/init.d/
+
+chmod 775 /etc/init.d/cuberite
+
+update-rc.d cuberite defaults
+
+nano cuberite.sh
+
+mv cuberite.sh /root/
+
 
 # starting cuberite
 sudo service cuberite start
