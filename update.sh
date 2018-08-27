@@ -142,12 +142,12 @@ else
 fi
 
 # Check Cuberite
-which ls /opt/cuberite/ &> /dev/null
+which ls /home/cuberite/ &> /dev/null
 
 if [ "$?" != 0 ]; then
     echo "Cuberite not Installed"
-    sudo mkdir /opt/cuberite/
-    sudo cd /opt/cuberite/
+    sudo mkdir /home/cuberite/
+    sudo cd /home/cuberite/
     sudo wget -Nnv https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/update.sh && chmod +x update.sh; ./update.sh
 else
     echo "Cuberite is Installed"

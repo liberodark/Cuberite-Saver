@@ -12,9 +12,9 @@ X64LOCSHA="http://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastSu
 ARMLOCSHA="http://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/lastSuccessfulBuild/artifact/Cuberite.tar.gz.sha1"
 
 ## Cuberite Directory
-CUBERITEDIR="/opt/cuberite/"
+CUBERITEDIR="/home/cuberite/"
 ## Cache Directory
-CACHEDIR="/opt/cuberite/.update/"
+CACHEDIR="/home/cuberite/.update/"
 
 # Check Root
 if [ "$EUID" -ne 0 ]
