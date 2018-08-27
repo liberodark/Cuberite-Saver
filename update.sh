@@ -131,8 +131,8 @@ which service cuberite &> /dev/null
 
 if [ "$?" != 0 ]; then
     echo "Cuberite Service not Installed"
-    wget https://www.dropbox.com/s/kp5xkzi2ng29cqk/cuberitedaemon.tar.gz
-    tar -xvzf cuberitedaemon.tar.gz && rm cuberitedaemon.tar.gz
+    wget https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/daemon/cuberite
+    wget https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/daemon/cuberite.sh
     mv cuberite /etc/init.d/
     chmod 677 /etc/init.d/cuberite
     update-rc.d cuberite defaults
@@ -146,9 +146,9 @@ which ls /home/cuberite/ &> /dev/null
 
 if [ "$?" != 0 ]; then
     echo "Cuberite not Installed"
-    sudo mkdir /home/cuberite/
-    sudo cd /home/cuberite/
-    sudo wget -Nnv https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/update.sh && chmod +x update.sh; ./update.sh
+    mkdir /home/cuberite/
+    cd /home/cuberite/
+    wget -Nnv https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/update.sh && chmod +x update.sh; ./update.sh
 else
     echo "Cuberite is Installed"
 fi
