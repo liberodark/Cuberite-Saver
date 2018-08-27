@@ -27,7 +27,7 @@ else
 fi ;
 
  # update updater
- if [ "$update_status" = "false" ]; then
+ if [ "$update_status" = "true" ]; then
  	wget -O $0 $update_source
  	$0 noupdate
  	exit 0
@@ -68,7 +68,7 @@ fi
 
 # Check OS & tar
 
-which unzip &> /dev/null
+which tar &> /dev/null
 
 if [ $? != 0 ]; then
   echo "tar is not Installed"
