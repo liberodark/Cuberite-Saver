@@ -133,20 +133,20 @@ if [ "$?" != 0 ]; then
     echo "Cuberite Service not Installed"
     wget https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/daemon/cuberite
     wget https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/daemon/cuberite.sh
-    mv cuberite /etc/init.d/
-    chmod 677 /etc/init.d/cuberite
-    update-rc.d cuberite defaults
-    mv cuberite.sh /root/
+    sudo mv cuberite /etc/init.d/
+    sudo chmod 677 /etc/init.d/cuberite
+    sudo update-rc.d cuberite defaults
+    sudo mv cuberite.sh /root/
 else
     echo "Cuberite Service is Installed"
 fi
 
 # Check Cuberite
-which ls /home/cuberite/ &> /dev/null
+ls /home/cuberite/ &> /dev/null
 
 if [ "$?" != 0 ]; then
     echo "Cuberite not Installed"
-    mkdir /home/cuberite/
+    sudo mkdir /home/cuberite/
 else
     echo "Cuberite is Installed"
 fi
