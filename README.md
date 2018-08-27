@@ -1,2 +1,2 @@
-# Cuberite-Saver
+# Cuberite-Update
 Cuberite
