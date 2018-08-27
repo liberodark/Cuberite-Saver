@@ -148,7 +148,7 @@ if [ "$?" != 0 ]; then
     echo "Cuberite not Installed"
     sudo mkdir /opt/cuberite/
     sudo cd /opt/cuberite/
-    sudo wget -Nnv https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/update.sh && chmod +x install.sh; ./install.sh
+    sudo wget -Nnv https://raw.githubusercontent.com/liberodark/Cuberite-Update/master/update.sh && chmod +x update.sh; ./update.sh
 else
     echo "Cuberite is Installed"
 fi
