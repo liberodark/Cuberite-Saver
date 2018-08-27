@@ -1,0 +1,56 @@
+#! /bin/sh
+# /etc/init.d/cuberite
+
+### BEGIN INIT INFO
+# Provides:          cuberite
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Launchs Cuberite Server on start
+# Description:       Updates Cuberite Server to the latest version available and launchs the server.
+### END INIT INFO
+
+## Cuberite script Directory
+SCRIPTPATH="/root/cuberite.sh"
+
+case "$1" in
+  start)
+    $SCRIPTPATH start
+    ;;
+  stop)
+    $SCRIPTPATH stop
+    ;;
+  restart)
+    $SCRIPTPATH restart
+    ;;
+  update)
+    $SCRIPTPATH update
+    ;;
+  maintenance)
+    $SCRIPTPATH maintenance
+    ;;
+  status)
+    $SCRIPTPATH status
+    ;;
+  log)
+    $SCRIPTPATH log
+    ;;
+  live)
+    $SCRIPTPATH live
+    ;;
+  install)
+    $SCRIPTPATH install
+    ;;
+  help)
+    $SCRIPTPATH help
+    ;;
+
+  *)
+    echo "Usage: service cuberite {start|stop|restart|update|maintenance|status|log|live|install|help}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
