@@ -206,7 +206,7 @@ fi
 	fi ;
 	echo "files extracted."
 
-	# moving to ts3_dir
+	# moving to dir_cube
 	cp -fr * $dir_cube
 	echo "server updated"
 
